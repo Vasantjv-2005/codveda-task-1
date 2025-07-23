@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>GitHub Repository Search</h1>
+            <p>Search for repositories and explore GitHub projects</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search repositories (e.g., 'react', 'vue', 'javascript')"
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="filters">
+                <select id="sortSelect">
+                    <option value="best-match">Best Match</option>
+                    <option value="stars">Most Stars</option>
+                    <option value="forks">Most Forks</option>
+                    <option value="updated">Recently Updated</option>
+                </select>
+                
+                <select id="languageSelect">
+                    <option value="">All Languages</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="go">Go</option>
+                    <option value="rust">Rust</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span id="resultsCount"></span>
+        </div>
+
+        <div id="loadingSpinner" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p>Searching repositories...</p>
+        </div>
+
+        <div id="errorMessage" class="error-message hidden">
+            <div class="error-content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <h3>Something went wrong</h3>
+                <p id="errorText"></p>
+                <button id="retryBtn" class="retry-btn">Try Again</button>
+            </div>
+        </div>
+
+        <div id="repositoriesContainer" class="repositories-container">
+            <!-- Repository cards will be inserted here -->
+        </div>
+
+        <div id="loadMoreContainer" class="load-more-container hidden">
+            <button id="loadMoreBtn" class="load-more-btn">Load More</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
